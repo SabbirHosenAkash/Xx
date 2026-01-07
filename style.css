@@ -1,0 +1,205 @@
+/* --- 1. Root Variables & Reset --- */
+:root {
+    --primary: #00ff88; 
+    --primary-glow: rgba(0, 255, 136, 0.4);
+    --accent: #00d4ff;
+    --bg: #030303;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-dim: #b0b0b0;
+    --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+#particles-js {
+    position: fixed; width: 100%; height: 100%; z-index: -1;
+}
+
+/* --- 2. Futuristic Navigation --- */
+.navbar {
+    position: fixed; width: 100%; top: 0; z-index: 1000;
+    background: rgba(3, 3, 3, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-container {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 5%;
+}
+
+.logo {
+    font-size: 1.5rem; font-weight: 800; letter-spacing: 3px;
+    color: var(--primary); text-shadow: 0 0 15px var(--primary-glow);
+}
+
+#nav-links { display: flex; list-style: none; gap: 30px; }
+#nav-links a {
+    text-decoration: none; color: var(--text-dim); font-size: 0.85rem;
+    text-transform: uppercase; letter-spacing: 1px; transition: var(--transition);
+}
+#nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+.menu-btn { display: none; cursor: pointer; }
+
+/* --- 3. Breathable Home Section (No Boxes) --- */
+.hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 100px 5% 50px; position: relative;
+}
+
+.hero-container { max-width: 1200px; margin: 0 auto; width: 100%; }
+.hero-content { display: flex; align-items: center; gap: 80px; }
+
+.profile-container { position: relative; flex: 1; display: flex; justify-content: center; }
+.profile-img {
+    width: 320px; height: 320px; border-radius: 50%;
+    object-fit: cover; z-index: 2; border: 8px solid var(--bg);
+}
+
+.rotating-ring {
+    position: absolute; width: 360px; height: 360px; border-radius: 50%;
+    border: 2px solid transparent; border-top: 2px solid var(--primary);
+    border-bottom: 2px solid var(--accent);
+    animation: rotate 4s linear infinite; z-index: 1;
+}
+
+@keyframes rotate { 100% { transform: rotate(360deg); } }
+
+.hero-text { flex: 1.5; }
+.greeting { color: var(--primary); font-weight: 500; letter-spacing: 2px; }
+.name { font-size: 4rem; line-height: 1.1; margin: 15px 0; font-weight: 700; }
+.name span { color: var(--primary); }
+.type-wrap { font-size: 1.8rem; color: var(--text-dim); margin-bottom: 20px; }
+
+.hero-bio { font-size: 1.1rem; color: var(--text-dim); max-width: 500px; margin-bottom: 30px; }
+
+/* Home Social Icons Fix */
+.hero-cta { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+.social-icons { display: flex; gap: 20px; }
+.social-icons a {
+    width: 45px; height: 45px; border-radius: 50%;
+    border: 1px solid var(--glass-border); display: flex;
+    align-items: center; justify-content: center; color: white;
+    font-size: 1.2rem; transition: var(--transition);
+}
+.social-icons a:hover {
+    background: var(--primary); color: #000;
+    transform: translateY(-5px); box-shadow: 0 10px 20px var(--primary-glow);
+}
+
+.btn-primary {
+    padding: 15px 35px; background: var(--primary); color: #000;
+    text-decoration: none; font-weight: 700; border-radius: 50px;
+    transition: var(--transition); display: inline-block;
+}
+.btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--primary-glow); }
+
+/* --- 4. Glassmorphism System (Other Sections) --- */
+section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+.section-title { 
+    font-size: 2.5rem; text-align: center; margin-bottom: 60px; 
+    text-transform: uppercase; letter-spacing: 4px;
+}
+.section-title span { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
+
+.grid-container { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 40px; border-radius: 25px;
+    text-align: center; transition: var(--transition);
+    cursor: pointer;
+}
+
+.glass-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(255,255,255,0.05);
+}
+
+.card-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+
+/* --- 5. Projects Swiper & Music Embed --- */
+.glass-container {
+    background: var(--glass); backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border); border-radius: 30px;
+    padding: 30px;
+}
+
+.project-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 20px; }
+.project-img img { width: 100%; border-radius: 15px; border: 1px solid var(--glass-border); }
+
+.music-embed { max-width: 900px; margin: 0 auto; }
+.spotify-action { text-align: center; margin-top: 25px; }
+.btn-spotify {
+    background: #1DB954; color: white; padding: 12px 30px;
+    text-decoration: none; border-radius: 50px; font-weight: 600;
+    transition: var(--transition); display: inline-block;
+}
+
+/* --- 6. Contact Form Logic --- */
+.contact-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+
+input, textarea {
+    width: 100%; padding: 18px; background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border); border-radius: 12px;
+    color: white; outline: none; transition: var(--transition);
+}
+input:focus, textarea:focus { border-color: var(--primary); background: rgba(255,255,255,0.08); }
+
+.submit-btn {
+    width: 100%; padding: 18px; background: var(--primary);
+    border: none; border-radius: 12px; font-weight: 700; cursor: pointer;
+    transition: var(--transition);
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+.info-item { font-size: 1.1rem; display: flex; align-items: center; gap: 15px; color: var(--text-dim); }
+.info-item i { color: var(--primary); font-size: 1.4rem; }
+
+/* --- 7. Mobile Optimization --- */
+@media (max-width: 992px) {
+    .hero-content { flex-direction: column; text-align: center; gap: 40px; }
+    .name { font-size: 2.8rem; }
+    .profile-img { width: 250px; height: 250px; }
+    .rotating-ring { width: 280px; height: 280px; }
+    .hero-cta { justify-content: center; }
+    .project-inner { grid-template-columns: 1fr; text-align: center; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .menu-btn { display: block; }
+    .bar { width: 25px; height: 3px; background: var(--primary); margin: 5px 0; transition: 0.4s; }
+    #nav-links {
+        position: fixed; top: 70px; left: -100%; width: 100%; height: 100vh;
+        background: rgba(3, 3, 3, 0.95); flex-direction: column; align-items: center;
+        padding-top: 50px; transition: 0.5s; backdrop-filter: blur(20px);
+    }
+    #nav-links.active { left: 0; }
+    .form-grid { grid-template-columns: 1fr; }
+}
+
+footer { padding: 40px; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-dim); }
+.accent { color: var(--primary); font-weight: 600; }
